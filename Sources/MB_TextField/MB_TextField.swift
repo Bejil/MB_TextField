@@ -10,6 +10,21 @@ import SnapKit
 
 open class MB_TextField: UITextField {
 	
+	public var selectHandler:(()->Void)?
+	public enum MB_TextField_Type {
+		
+		case none
+		case email
+		case password
+		case select
+	}
+	public var type:MB_TextField_Type = .none {
+		
+		didSet {
+			
+			setUp()
+		}
+	}
 	public override var isEnabled: Bool {
 		
 		didSet {
@@ -211,6 +226,55 @@ open class MB_TextField: UITextField {
 		snp.makeConstraints { make in
 			
 			make.height.equalTo(50)
+		}
+		
+		if type == .email {
+			
+			placeholder = String(key: "textFields_email_placeholder")
+			isMandatory = true
+			autocapitalizationType = .none
+			autocorrectionType = .no
+			keyboardType = .emailAddress
+			
+			endHandler = { [weak self] _ in
+				
+				self?.isValid = self?.text?.isValidEmail ?? false
+			}
+		}
+		else if type == .password {
+			
+			placeholder = String(key: "textFields_password_placeholder")
+			isMandatory = true
+			isSecureTextEntry = true
+			
+			endHandler = { [weak self] _ in
+				
+				self?.isValid = self?.text?.isValidPassword ?? false
+			}
+		}
+		else if type == .select {
+			
+			isEditable = false
+			
+			let view:UIView = .init()
+			let imageView:UIImageView = .init(image: UIImage(systemName: "chevron.down.square.fill"))
+			view.addSubview(imageView)
+			imageView.snp.makeConstraints { make in
+				make.top.bottom.left.equalToSuperview()
+				make.right.equalToSuperview().inset(UI.Margins)
+			}
+			rightView = view
+			
+			let button:UIButton = .init()
+			button.addAction(.init(handler: { [weak self] _ in
+
+				self?.selectHandler?()
+				
+			}), for: .touchUpInside)
+			addSubview(button)
+			button.snp.makeConstraints { make in
+				make.edges.equalToSuperview()
+			}
 		}
 	}
 	
