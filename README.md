@@ -1,3 +1,3 @@
 # MB_TextField
 
-A description of this package.
+A custom TextField with floating placeholder, mandatory and other options
