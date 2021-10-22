@@ -5,7 +5,7 @@ MB_TextField
 
 ## Screenshot
 
-![Example](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitExample.png)
+![Example](https://github.com/Bejil/MB_TextField/blob/main/Screenshot.png)
 
 ## Installation
 
