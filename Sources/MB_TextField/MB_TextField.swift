@@ -134,7 +134,7 @@ open class MB_TextField: UITextField {
 			if isLoading {
 				
 				let activityIndicatorView:UIActivityIndicatorView = .init(style: .medium)
-				activityIndicatorView.color = Colors.Text.withAlphaComponent(0.5)
+				activityIndicatorView.color = (textColor ?? .darkText).withAlphaComponent(0.5)
 				activityIndicatorView.startAnimating()
 				
 				let loadingView:UIView = .init()
@@ -173,6 +173,20 @@ open class MB_TextField: UITextField {
 			}
 		}
 	}
+	public var mandatoryColor:UIColor = .red {
+		
+		didSet {
+			
+			updatePlaceholder()
+		}
+	}
+	public var invalidColor:UIColor = .red {
+		
+		didSet {
+			
+			updateBorder()
+		}
+	}
 	
 	convenience init() {
 		
@@ -185,9 +199,7 @@ open class MB_TextField: UITextField {
 		
 		layer.cornerRadius = UI.CornerRadius
 		layer.borderWidth = 1.0
-		tintColor = Colors.Secondary
 		font = Fonts.Content.Regular
-		textColor = Colors.Text
 		clearButtonMode = .whileEditing
 		autocapitalizationType = .sentences
 		autocorrectionType = .default
@@ -195,7 +207,6 @@ open class MB_TextField: UITextField {
 		returnKeyType = .done
 		inputAccessoryView = toolbar
 		rightViewMode = .always
-		backgroundColor = Colors.Background
 		delegate = self
 		
 		addSubview(placeholderLabel)
@@ -326,7 +337,7 @@ open class MB_TextField: UITextField {
 	
 	private func updateBorder() {
 		
-		layer.borderColor = isFirstResponder ? tintColor.cgColor : !isValid ? Colors.Red.cgColor : Colors.Text.withAlphaComponent(0.25).cgColor
+		layer.borderColor = isFirstResponder ? tintColor.cgColor : !isValid ? invalidColor.cgColor : (textColor ?? .darkText).withAlphaComponent(0.25).cgColor
 	}
 	
 	private func updatePlaceholder() {
@@ -335,12 +346,12 @@ open class MB_TextField: UITextField {
 		
 		let placeholderState = !(text?.isEmpty ?? true)
 		
-		let placeholderAttributes: [NSAttributedString.Key: Any] = [.font: Fonts.Content.Regular.withSize((placeholderState && isFloatingPlaceholder) ? (Fonts.Size.Default - 5) : font?.pointSize ?? Fonts.Size.Default) as Any, .foregroundColor: isFirstResponder && isFloatingPlaceholder && !(text?.isEmpty ?? true) ? tintColor as Any : Colors.Text.withAlphaComponent(0.5) as Any]
+		let placeholderAttributes: [NSAttributedString.Key: Any] = [.font: Fonts.Content.Regular.withSize((placeholderState && isFloatingPlaceholder) ? (Fonts.Size.Default - 5) : font?.pointSize ?? Fonts.Size.Default) as Any, .foregroundColor: isFirstResponder && isFloatingPlaceholder && !(text?.isEmpty ?? true) ? tintColor as Any : (textColor ?? .darkText).withAlphaComponent(0.5) as Any]
 		let placeholderAttributedString:NSMutableAttributedString = .init(string: placeholderLabel.accessibilityLabel ?? "", attributes: placeholderAttributes)
 		
 		if isMandatory {
 			
-			let mandatoryAttributes: [NSAttributedString.Key: Any] = [.font: Fonts.Content.Bold.withSize(Fonts.Size.Default - (placeholderState && isFloatingPlaceholder ? 2 : 0)) as Any, .foregroundColor: Colors.Red as Any]
+			let mandatoryAttributes: [NSAttributedString.Key: Any] = [.font: Fonts.Content.Bold.withSize(Fonts.Size.Default - (placeholderState && isFloatingPlaceholder ? 2 : 0)) as Any, .foregroundColor: mandatoryColor as Any]
 			placeholderAttributedString.append(.init(string: " ﹡", attributes: mandatoryAttributes))
 		}
 		

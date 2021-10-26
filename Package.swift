@@ -24,8 +24,7 @@ let package = Package(
         .target(
             name: "MB_TextField",
             dependencies: ["SnapKit"],
-			resources: [.process("Resources/Assets.xcassets"),
-						.process("Resources/Fonts/NunitoSans-Regular.ttf"),
+			resources: [.process("Resources/Fonts/NunitoSans-Regular.ttf"),
 						.process("Resources/Fonts/NunitoSans-Bold.ttf")]
 		),
         .testTarget(
