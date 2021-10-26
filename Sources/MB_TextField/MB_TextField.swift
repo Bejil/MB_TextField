@@ -36,6 +36,7 @@ open class MB_TextField: UITextField {
 	public var returnHandler:((MB_TextField?)->Void)?
 	public var clearHandler:((MB_TextField?)->Void)?
 	public var changeHandler:((MB_TextField?)->Void)?
+	public var changeDelay:Double = 0.0
 	public var endHandler:((MB_TextField?)->Void)?
 	public var beginHandler:((MB_TextField?)->Void)?
 	public var canPaste: Bool = true
@@ -202,7 +203,11 @@ open class MB_TextField: UITextField {
 		addAction(.init(handler: { [weak self] _ in
 			
 			self?.updatePlaceholder()
-			self?.changeHandler?(self)
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + (self?.changeDelay ?? 0.0)) { [weak self] in
+				
+				self?.changeHandler?(self)
+			}
 			
 		}), for: .editingChanged)
 		

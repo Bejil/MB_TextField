@@ -49,6 +49,10 @@ textField.beginHandler = { textField in
 	//User begin writing (textField just got focus)
 }
 ```
+### Delayed changeHandler
+In some cases we want to delay the changeHandler in order to prevent too frequent calls on API.
+For that you can change `textField.changeDelay` (default = 0.0)
+
 ## Types
 
 `MB_TextField` support multiple types with differents options and text validation:
@@ -113,7 +117,7 @@ textField.selectHandler = {
 }
 ```
 ## Customization
-`MM_TextField` can be customized with the properties:
+`MB_TextField` can be customized with the properties:
 
 - `tintColor` affect the toolbar's buttons and the borders
  - `isValid` affect the borders
@@ -121,4 +125,5 @@ textField.selectHandler = {
  - `isMandatory`add a mandatory `*` to the placeholder
  - `isLoading` display a `UIActivityIndicatorView`
  - `canPaste` affect the paste possibility
+
 
