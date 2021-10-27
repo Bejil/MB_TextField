@@ -117,7 +117,7 @@ textField.selectHandler = {
 }
 ```
 ## Customization
-`MB_TextField` can be customized with the properties:
+`MB_TextField` can be customized with these properties:
 
 - `tintColor` affect the toolbar's buttons and the borders
  - `isValid` affect the borders
@@ -138,5 +138,18 @@ textField.selectHandler = {
 - `mandatoryFont` the font of the `*` in the placeholder
 - `toolbarFont` the font of the toolbar's buttons
  
+## Override
+You can override `MB_TextField` and set all of your custom valeurs in the `setUp()` function
 
-
+```swift
+public class CustomTextField : MB_TextField {
+	
+	public override func setUp() {
+		
+		super.setUp()
+		
+		placeholderFont = UIFont.boldSystemFont(ofSize: 18)
+		...
+	}
+}
+```
