@@ -136,6 +136,7 @@ textField.selectHandler = {
  - `font` the font of the main text
  - `placeholderFont` the font of the placeholder
 - `mandatoryFont` the font of the `*` in the placeholder
+- `mandatory` the text to add to the placeholder if `isMandatory == true`
 - `toolbarFont` the font of the toolbar's buttons
  
 ## Override

@@ -217,6 +217,16 @@ open class MB_TextField: UITextField {
 	}
 	
 	//MARK: - Values
+	/**The mandatory value to add to the placeholder if `isMandatory == true`
+	 - Note: Default value is `*`
+	*/
+	public var mandatory: String = "*" {
+		
+		didSet {
+			
+			updatePlaceholder()
+		}
+	}
 	///The placeholder value
 	public override var placeholder: String? {
 		
@@ -466,7 +476,7 @@ open class MB_TextField: UITextField {
 		if isMandatory {
 			
 			let mandatoryAttributes: [NSAttributedString.Key: Any] = [.font: mandatoryFont.withSize(Fonts.Size.Default - (placeholderState && isFloatingPlaceholder ? 2 : 0)) as Any, .foregroundColor: mandatoryColor as Any]
-			placeholderAttributedString.append(.init(string: " ﹡", attributes: mandatoryAttributes))
+			placeholderAttributedString.append(.init(string: " " + mandatory, attributes: mandatoryAttributes))
 		}
 		
 		placeholderLabel.attributedText = placeholderAttributedString
