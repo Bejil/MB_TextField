@@ -13,14 +13,6 @@ struct UI {
 	static let CornerRadius:CGFloat = Margins/2
 }
 
-struct Colors {
-	
-	static let Text:UIColor = UIColor(named: "Text")!
-	static let Secondary:UIColor = UIColor(named: "Secondary")!
-	static let Background:UIColor = UIColor(named: "Background")!
-	static let Red:UIColor = UIColor(named: "Red")!
-}
-
 struct Fonts {
 	
 	struct Name {

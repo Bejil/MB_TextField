@@ -127,9 +127,16 @@ textField.selectHandler = {
  - `canPaste` affect the paste possibility
  - `backgroundColor` affect the background
  - `textColor` affect the color of the text
- - `tintColor` affect the color of the cursor, the border and the toolBar buttons
+ - `tintColor` affect the color of the cursor, the active border and the toolBar buttons
  - `invalidColor` affect the border color when field `isValid = false`
  - `mandatoryColor` affect the `*` color of the placeholder when field `isMandatory = true`
+ - `borderColor` affect the default border color
+ - `placeholderColor` affect the placeholder color
+ - `isLoading` add a `UIActivityIndicatorView`
+ - `font` the font of the main text
+ - `placeholderFont` the font of the placeholder
+- `mandatoryFont` the font of the `*` in the placeholder
+- `toolbarFont` the font of the toolbar's buttons
  
 
 

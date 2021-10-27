@@ -23,9 +23,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "MB_TextField",
-            dependencies: ["SnapKit"],
-			resources: [.process("Resources/Fonts/NunitoSans-Regular.ttf"),
-						.process("Resources/Fonts/NunitoSans-Bold.ttf")]
+            dependencies: ["SnapKit"]
 		),
         .testTarget(
             name: "MB_TextFieldTests",
