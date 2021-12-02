@@ -509,7 +509,7 @@ open class MB_TextField: UITextField {
 	
 	private func getToolbar() -> UIToolbar {
 		
-		let toolbar:UIToolbar = .init(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 3 * UI.Margins))
+		let toolbar:UIToolbar = .init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 3 * UI.Margins))
 		toolbar.tintColor = tintColor
 		
 		let cancelBarButtonItem:UIBarButtonItem = .init(systemItem: .cancel, primaryAction: .init(handler: { [weak self] _ in
