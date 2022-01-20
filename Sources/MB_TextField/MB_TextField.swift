@@ -490,7 +490,7 @@ open class MB_TextField: UITextField {
 				self.placeholderLabel.snp.makeConstraints { make in
 					
 					make.left.equalToSuperview().inset((self.leftView?.frame.size.width ?? 0) + (UI.Margins/2))
-					make.right.equalToSuperview().inset(UI.Margins/2 + (self.frame.size.width - (self.editingRect(forBounds: self.frame).size.width + self.editingRect(forBounds: self.frame).origin.x))).priority(.high)
+					make.right.equalToSuperview().inset((self.rightView?.frame.size.width ?? 0) + (UI.Margins/2))
 					
 					if placeholderState && self.isFloatingPlaceholder {
 						
