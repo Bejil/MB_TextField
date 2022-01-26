@@ -24,9 +24,6 @@ let package = Package(
         .target(
             name: "MB_TextField",
             dependencies: ["SnapKit"]
-		),
-        .testTarget(
-            name: "MB_TextFieldTests",
-            dependencies: ["MB_TextField"]),
+		)
     ]
 )
