@@ -575,7 +575,7 @@ extension MB_TextField : UITextFieldDelegate {
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				
-				scrollView.setContentOffset(.init(x: 0, y: scrollView.contentSize.height > scrollView.frame.size.height && (origin.y - (2*UI.Margins)) + scrollView.frame.size.height > scrollView.contentSize.height ? scrollView.contentSize.height - scrollView.frame.size.height : origin.y - (2*UI.Margins)), animated: true)
+				scrollView.setContentOffset(.init(x: 0, y: scrollView.contentSize.height > scrollView.frame.size.height && (origin.y - (3*UI.Margins)) + scrollView.frame.size.height > scrollView.contentSize.height ? scrollView.contentSize.height - scrollView.frame.size.height : origin.y - (3*UI.Margins)), animated: true)
 			}
 		}
 		
