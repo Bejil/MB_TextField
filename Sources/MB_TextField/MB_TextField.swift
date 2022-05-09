@@ -571,11 +571,11 @@ extension MB_TextField : UITextFieldDelegate {
 		
 		if let scrollView = nearestAncestor(ofType: UIScrollView.self), let origin = superview?.convert(frame.origin, to: scrollView) {
 			
-			originalContentOffset = origin
+			originalContentOffset = scrollView.contentOffset
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				
-				scrollView.setContentOffset(.init(x: 0, y: scrollView.contentSize.height > scrollView.frame.size.height && (origin.y - UI.Margins) + scrollView.frame.size.height > scrollView.contentSize.height ? scrollView.contentSize.height - scrollView.frame.size.height : origin.y - UI.Margins), animated: true)
+				scrollView.setContentOffset(.init(x: 0, y: scrollView.contentSize.height > scrollView.frame.size.height && (origin.y - (2*UI.Margins)) + scrollView.frame.size.height > scrollView.contentSize.height ? scrollView.contentSize.height - scrollView.frame.size.height : origin.y - (2*UI.Margins)), animated: true)
 			}
 		}
 		
