@@ -127,6 +127,11 @@ open class MB_TextField: UITextField {
 	
 	//MARK: - States
 	/**
+	 Defines if the textField should scroll the nearest scrollView
+	 - Note: Default value is `false`.
+	 */
+	public var shouldScroll: Bool = false
+	/**
 	 Defines if the textField is enabled or not
 	 - Note: Default value is `true`. This alter the alpha of the field: `1.0` if true, `0.5` if false
 	 */
@@ -569,7 +574,7 @@ extension MB_TextField : UITextFieldDelegate {
 	
 	public func textFieldDidBeginEditing(_ textField: UITextField) {
 		
-		if let scrollView = nearestAncestor(ofType: UIScrollView.self), let origin = superview?.convert(frame.origin, to: scrollView) {
+		if shouldScroll, let scrollView = nearestAncestor(ofType: UIScrollView.self), let origin = superview?.convert(frame.origin, to: scrollView) {
 			
 			originalContentOffset = scrollView.contentOffset
 			
@@ -584,7 +589,7 @@ extension MB_TextField : UITextFieldDelegate {
 	
 	public func textFieldDidEndEditing(_ textField: UITextField) {
 		
-		if let scrollView = nearestAncestor(ofType: UIScrollView.self), let originalContentOffset = originalContentOffset {
+		if shouldScroll, let scrollView = nearestAncestor(ofType: UIScrollView.self), let originalContentOffset = originalContentOffset {
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				
