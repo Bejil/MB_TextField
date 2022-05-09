@@ -309,6 +309,7 @@ open class MB_TextField: UITextField {
 		}
 	}
 	//MARK: Private
+	private var originalContentOffset:CGPoint?
 	private lazy var placeholderLabel: UILabel = .init()
 	private var realRightView: UIView?
 	
@@ -570,6 +571,8 @@ extension MB_TextField : UITextFieldDelegate {
 		
 		if let scrollView = nearestAncestor(ofType: UIScrollView.self), let origin = superview?.convert(frame.origin, to: scrollView) {
 			
+			originalContentOffset = origin
+			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				
 				scrollView.setContentOffset(.init(x: 0, y: scrollView.contentSize.height > scrollView.frame.size.height && (origin.y - UI.Margins) + scrollView.frame.size.height > scrollView.contentSize.height ? scrollView.contentSize.height - scrollView.frame.size.height : origin.y - UI.Margins), animated: true)
@@ -580,6 +583,14 @@ extension MB_TextField : UITextFieldDelegate {
 	}
 	
 	public func textFieldDidEndEditing(_ textField: UITextField) {
+		
+		if let originalContentOffset = originalContentOffset {
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+				
+				scrollView.setContentOffset(originalContentOffset, animated: true)
+			}
+		}
 		
 		endHandler?(self)
 	}
