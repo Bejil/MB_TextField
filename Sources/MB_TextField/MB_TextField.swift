@@ -584,7 +584,7 @@ extension MB_TextField : UITextFieldDelegate {
 	
 	public func textFieldDidEndEditing(_ textField: UITextField) {
 		
-		if let originalContentOffset = originalContentOffset {
+		if let scrollView = nearestAncestor(ofType: UIScrollView.self), let originalContentOffset = originalContentOffset {
 			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
 				
