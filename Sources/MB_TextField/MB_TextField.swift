@@ -317,6 +317,7 @@ open class MB_TextField: UITextField {
 	private var originalContentOffset:CGPoint?
 	private lazy var placeholderLabel: UILabel = .init()
 	private var realRightView: UIView?
+	public var selectButton:UIButton?
 	
 	convenience init() {
 		
@@ -411,14 +412,14 @@ open class MB_TextField: UITextField {
 			}
 			rightView = view
 			
-			let button:UIButton = .init()
-			button.addAction(.init(handler: { [weak self] _ in
+			selectButton = .init()
+			selectButton?.addAction(.init(handler: { [weak self] _ in
 
 				self?.selectHandler?(button)
 				
 			}), for: .touchUpInside)
-			addSubview(button)
-			button.snp.makeConstraints { make in
+			addSubview(selectButton)
+			selectButton?.snp.makeConstraints { make in
 				make.edges.equalToSuperview()
 			}
 		}
