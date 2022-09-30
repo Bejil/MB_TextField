@@ -106,7 +106,7 @@ open class MB_TextField: UITextField {
 		}
 	}
 	///Defines the closure to be called when `type = .select` and textField is touched
-	public var selectHandler:(()->Void)?
+	public var selectHandler:((UIButton)->Void)?
 	
 	//MARK: - Common closure
 	///Closure called when user touch keyboard's return key
@@ -414,7 +414,7 @@ open class MB_TextField: UITextField {
 			let button:UIButton = .init()
 			button.addAction(.init(handler: { [weak self] _ in
 
-				self?.selectHandler?()
+				self?.selectHandler?(button)
 				
 			}), for: .touchUpInside)
 			addSubview(button)
