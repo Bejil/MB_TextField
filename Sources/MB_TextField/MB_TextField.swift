@@ -156,7 +156,7 @@ open class MB_TextField: UITextField {
 	 Defines if the text is valid or not
 	 - Note: Default value is `true`. This alter the border color of the field
 	 */
-	public var isValid: Bool = true {
+	open var isValid: Bool = true {
 		
 		didSet {
 			
