@@ -247,7 +247,7 @@ open class MB_TextField: UITextField {
 		}
 	}
 	///The textField value
-	public override var text: String? {
+	open override var text: String? {
 		
 		didSet {
 			
