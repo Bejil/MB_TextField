@@ -76,6 +76,7 @@ open class MB_TextField: UITextField {
 	 - email: For email textField
 	 - password: For email textField
 	 - select: For using textField like a dropdown button
+	 - number: For number only textField
 	 
 	 When `type = .email`, the value is validated at the end of editing with this regex: `[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}` at the end of editing.
 	 
@@ -93,6 +94,7 @@ open class MB_TextField: UITextField {
 		case email
 		case password
 		case select
+		case number
 	}
 	/**
 	 Defines the current type of the textField
@@ -313,11 +315,11 @@ open class MB_TextField: UITextField {
 			}
 		}
 	}
+	public var selectButton:UIButton?
 	//MARK: Private
 	private var originalContentOffset:CGPoint?
 	private lazy var placeholderLabel: UILabel = .init()
 	private var realRightView: UIView?
-	public var selectButton:UIButton?
 	
 	convenience init() {
 		
@@ -425,6 +427,10 @@ open class MB_TextField: UITextField {
 					make.edges.equalToSuperview()
 				}
 			}
+		}
+		else if type == .number {
+			
+			keyboardType = .phonePad
 		}
 	}
 	
