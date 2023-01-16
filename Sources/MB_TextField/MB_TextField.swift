@@ -444,9 +444,9 @@ open class MB_TextField: UITextField {
 	private func rect(forBounds bounds: CGRect) -> CGRect {
 		
 		var lc_frame:CGRect = .init()
-		lc_frame.origin.x = (leftView?.frame.size.width ?? 0) + (UI.Margins/2)
+		lc_frame.origin.x = (leftView?.frame.size.width ?? 0) + UI.Margins
 		lc_frame.origin.y = text?.isEmpty ?? true || !isFloatingPlaceholder ? UI.Margins/2 : placeholderLabel.frame.maxY
-		lc_frame.size.width = bounds.size.width - lc_frame.origin.x - (rightView != nil ? (rightView?.frame.size.width ?? 0) + (UI.Margins/2) : 0) - (UI.Margins/2)
+		lc_frame.size.width = bounds.size.width - lc_frame.origin.x - (rightView != nil ? (rightView?.frame.size.width ?? 0) + (UI.Margins/2) : 0) - UI.Margins
 		lc_frame.size.height = bounds.size.height - (text?.isEmpty ?? true || !isFloatingPlaceholder ? (2 * lc_frame.origin.y) : placeholderLabel.frame.maxY + placeholderLabel.frame.origin.y)
 		return lc_frame
 	}
@@ -505,8 +505,8 @@ open class MB_TextField: UITextField {
 				
 				self.placeholderLabel.snp.makeConstraints { make in
 					
-					make.left.equalToSuperview().inset((self.leftView?.frame.size.width ?? 0) + (UI.Margins/2))
-					make.right.equalToSuperview().inset((self.rightView?.frame.size.width ?? 0) + (UI.Margins/2))
+					make.left.equalToSuperview().inset((self.leftView?.frame.size.width ?? 0) + UI.Margins)
+					make.right.equalToSuperview().inset((self.rightView?.frame.size.width ?? 0) + UI.Margins)
 					
 					if placeholderState && self.isFloatingPlaceholder {
 						
