@@ -495,11 +495,6 @@ open class MB_TextField: UITextField {
 			placeholderAttributedString.append(.init(string: " " + mandatory, attributes: mandatoryAttributes))
 		}
 		
-		if placeholderLabel.isHidden {
-			
-			attributedPlaceholder = placeholderAttributedString
-		}
-		
 		placeholderLabel.attributedText = placeholderAttributedString
 		
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseInOut) {
