@@ -148,7 +148,7 @@ open class MB_TextField: UITextField {
 	 Defines if the textField can be edited or not
 	 - Note: Default value is `true`
 	 */
-	public var isEditable:Bool = true
+	public var canEdit:Bool = true
 	/**
 	 Defines if the user can paste text in the textField
 	 - Note: Default value is `true`
@@ -403,7 +403,7 @@ open class MB_TextField: UITextField {
 		}
 		else if type == .select {
 			
-			isEditable = false
+			canEdit = false
 			
 			let view:UIView = .init()
 			let imageView:UIImageView = .init(image: UIImage(systemName: "chevron.down.square.fill"))
@@ -565,7 +565,7 @@ extension MB_TextField : UITextFieldDelegate {
 	
 	public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		
-		return isEditable
+		return canEdit
 	}
 	
 	open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
